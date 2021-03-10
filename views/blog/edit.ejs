@@ -1,0 +1,6 @@
+<h1>Edit Blog</h1>
+<form action="/blog/edit/<%= id %>" method="POST">
+    <%- include('../partials/blog_form.ejs') %>
+    <input type="submit" value="Edit" class="btn btn-success">
+    <a href="/dashbord" class="btn btn-secondary d-inline">Cancel</a>
+</form>

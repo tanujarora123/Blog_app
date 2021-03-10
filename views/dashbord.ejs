@@ -1,0 +1,27 @@
+<h2>Welcome <%= name %></h2>
+<h1>Dashbord</h1>
+<%- include('./partials/msg_partials')%>
+<h3 class="mb-4">Blogs</h3>
+<a href="/blog/create" class="btn btn-success mb-2">Create Blog</a>
+<a href="/auth/logout" class="btn btn-danger mb-2">Logout</a>
+<div class="row">
+    <% if(blogs.length != 0){ %>
+        <% blogs.forEach(blog => { %>
+            <div class="col-md-4">
+                <div class="card card-body mb-2">
+                    <h2><%= blog.title %></h2>
+                    <p><%= blog.discription %></p>
+                    <small class="mb-2"><%= blog.createdAt.toLocaleDateString() %></small>
+                    <div class="btns" style="display: flex;">
+                        <a href="/blog/edit/<%= blog.id %>" class="btn btn-secondary" style="margin-right: 10px;">Edit</a>
+                        <form action="/blog/delete/<%= blog.id %>?_method=DELETE" method="POST">
+                            <input type="submit" value="Delete" class="btn btn-danger">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    <% } else{ %>
+        <h3>You Currently have no Blogs</h3>
+    <% } %>
+</div>
